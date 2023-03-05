@@ -4,10 +4,8 @@
 // | CatchAdmin
 // +----------------------------------------------------------------------
 // | Copyright (c) 2017~2021 https://catchadmin.com All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( https://github.com/JaguarJack/catchadmin/blob/master/LICENSE.md )
-// +----------------------------------------------------------------------
-// | Author: JaguarJack [ njphper@gmail.com ]
+
+// | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
 return [

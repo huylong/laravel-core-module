@@ -1,13 +1,11 @@
 <?php
 
 // +----------------------------------------------------------------------
-// | CatchAdmin [Just Like ～ ]
+// | HuyPham [Just Like ～ ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2017~2022 https://catchadmin.com All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( https://github.com/JaguarJack/catchadmin/blob/master/LICENSE.md )
-// +----------------------------------------------------------------------
-// | Author: JaguarJack [ njphper@gmail.com ]
+
+// | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
 declare(strict_types=1);
