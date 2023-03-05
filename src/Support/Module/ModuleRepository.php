@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Module;
+namespace BlueStar\Support\Module;
 
-use Catch\Contracts\ModuleRepositoryInterface;
-use Catch\Events\Module\Created;
-use Catch\Events\Module\Creating;
-use Catch\Events\Module\Deleted;
-use Catch\Events\Module\Updated;
-use Catch\Events\Module\Updating;
+use BlueStar\Contracts\ModuleRepositoryInterface;
+use BlueStar\Events\Module\Created;
+use BlueStar\Events\Module\Creating;
+use BlueStar\Events\Module\Deleted;
+use BlueStar\Events\Module\Updated;
+use BlueStar\Events\Module\Updating;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Event;

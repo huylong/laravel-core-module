@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Facade;
+namespace BlueStar\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

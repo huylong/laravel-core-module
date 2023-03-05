@@ -14,7 +14,7 @@
             "src/Support/helpers.php"
         ],
         "psr-4": {
-            "Catch\\": "src/"
+            "BlueStar\\": "src/"
         }
     },
     "authors": [
@@ -26,7 +26,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Catch\\Providers\\CatchAdminServiceProvider"
+                "BlueStar\\Providers\\BlueStarAdminServiceProvider"
             ]
         }
     },

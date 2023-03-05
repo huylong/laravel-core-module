@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Events\Module;
+namespace BlueStar\Events\Module;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

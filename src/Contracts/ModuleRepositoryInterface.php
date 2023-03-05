@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Contracts;
+namespace BlueStar\Contracts;
 
 use Illuminate\Support\Collection;
 

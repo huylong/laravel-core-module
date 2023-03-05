@@ -10,29 +10,29 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands\Create;
+namespace BlueStar\Commands\Create;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class Model extends CatchCommand
+class Model extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:model {module} {model} {--t= : the model of table name}';
+    protected $signature = 'bluestar:make:model {module} {model} {--t= : the model of table name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'create catch module';
+    protected $description = 'create bluestar module';
 
     /**
      * Create a new command instance.
@@ -56,7 +56,7 @@ class Model extends CatchCommand
             exit;
         }
 
-        $modelPath = CatchAdmin::getModuleModelPath($this->argument('module'));
+        $modelPath = BlueStarAdmin::getModuleModelPath($this->argument('module'));
 
         $file = $modelPath.$this->getModelFile();
 
@@ -136,7 +136,7 @@ class Model extends CatchCommand
      */
     protected function getModelNamespace(): string
     {
-        return trim(CatchAdmin::getModuleModelNamespace($this->argument('module')), '\\');
+        return trim(BlueStarAdmin::getModuleModelNamespace($this->argument('module')), '\\');
     }
 
     /**

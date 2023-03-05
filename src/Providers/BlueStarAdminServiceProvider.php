@@ -8,12 +8,12 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Providers;
+namespace BlueStar\Providers;
 
-use Catch\CatchAdmin;
-use Catch\Contracts\ModuleRepositoryInterface;
-use Catch\Support\DB\Query;
-use Catch\Support\Module\ModuleManager;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Contracts\ModuleRepositoryInterface;
+use BlueStar\Support\DB\Query;
+use BlueStar\Support\Module\ModuleManager;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Http\Events\RequestHandled;
@@ -23,12 +23,12 @@ use Illuminate\Support\ServiceProvider;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
-use Catch\Support\Macros\MacrosRegister;
+use BlueStar\Support\Macros\MacrosRegister;
 
 /**
- * CatchAmin Service Provider
+ * BlueStarAmin Service Provider
  */
-class CatchAdminServiceProvider extends ServiceProvider
+class BlueStarAdminServiceProvider extends ServiceProvider
 {
     /**
      * boot
@@ -72,7 +72,7 @@ class CatchAdminServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        loadCommands(dirname(__DIR__).DIRECTORY_SEPARATOR.'Commands', 'Catch\\');
+        loadCommands(dirname(__DIR__).DIRECTORY_SEPARATOR.'Commands', 'BlueStar\\');
     }
 
     /**
@@ -102,7 +102,7 @@ class CatchAdminServiceProvider extends ServiceProvider
      */
     protected function registerEvents(): void
     {
-        Event::listen(RequestHandled::class, config('catch.response.request_handled_listener'));
+        Event::listen(RequestHandled::class, config('bluestar.response.request_handled_listener'));
     }
 
     /**
@@ -113,11 +113,11 @@ class CatchAdminServiceProvider extends ServiceProvider
     protected function publishConfig(): void
     {
         if ($this->app->runningInConsole()) {
-            $from = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'catch.php';
+            $from = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'bluestar.php';
 
-            $to = config_path('catch.php');
+            $to = config_path('bluestar.php');
 
-            $this->publishes([$from => $to], 'catch-config');
+            $this->publishes([$from => $to], 'bluestar-config');
         }
     }
 
@@ -134,7 +134,7 @@ class CatchAdminServiceProvider extends ServiceProvider
 
             $to = database_path('migrations').DIRECTORY_SEPARATOR.'2022_11_14_034127_module.php';
 
-            $this->publishes([$form => $to], 'catch-module');
+            $this->publishes([$form => $to], 'bluestar-module');
         }
     }
 
@@ -146,8 +146,8 @@ class CatchAdminServiceProvider extends ServiceProvider
      */
     protected function bootDefaultModuleProviders(): void
     {
-        foreach ($this->app['config']->get('catch.module.default', []) as $module) {
-            $provider = CatchAdmin::getModuleServiceProvider($module);
+        foreach ($this->app['config']->get('bluestar.module.default', []) as $module) {
+            $provider = BlueStarAdmin::getModuleServiceProvider($module);
             if (class_exists($provider)) {
                 $this->app->register($provider);
             }
@@ -180,12 +180,12 @@ class CatchAdminServiceProvider extends ServiceProvider
     protected function registerModuleRoutes()
     {
         if (! $this->app->routesAreCached()) {
-            $route = $this->app['config']->get('catch.route');
+            $route = $this->app['config']->get('bluestar.route');
 
             if (! empty($route)) {
                 Route::prefix($route['prefix'])
                     ->middleware($route['middlewares'])
-                    ->group($this->app['config']->get('catch.module.routes'));
+                    ->group($this->app['config']->get('bluestar.module.routes'));
             }
         }
     }
@@ -199,7 +199,7 @@ class CatchAdminServiceProvider extends ServiceProvider
      */
     protected function listenDBLog(): void
     {
-        if ($this->app['config']->get('catch.listen_db_log')) {
+        if ($this->app['config']->get('bluestar.listen_db_log')) {
             Query::listen();
 
             $this->app->terminating(function () {

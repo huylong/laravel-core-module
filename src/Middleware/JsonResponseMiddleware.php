@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Middleware;
+namespace BlueStar\Middleware;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

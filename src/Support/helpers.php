@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
-use Catch\Base\CatchModel;
-use Catch\CatchAdmin;
+use BlueStar\Base\BlueStarModel;
+use BlueStar\BlueStarAdmin;
 
 /**
  * load commands
@@ -70,7 +70,7 @@ if (! function_exists('withTablePrefix')) {
 if (! function_exists('getGuardName')) {
     function getGuardName(): string
     {
-        $guardKeys = array_keys(config('catch.auth.guards', []));
+        $guardKeys = array_keys(config('bluestar.auth.guards', []));
 
         if (count($guardKeys)) {
             return $guardKeys[0];
@@ -121,7 +121,7 @@ if (! function_exists('getAuthUserModel')) {
      */
     function getAuthUserModel(): mixed
     {
-        return config('catch.auth_model');
+        return config('bluestar.auth_model');
     }
 }
 
@@ -147,7 +147,7 @@ if (! function_exists('importTreeData')) {
             }
 
             // 首先查询是否存在
-            $model = new class extends CatchModel {};
+            $model = new class extends BlueStarModel {};
 
             $menu = $model->setTable($table)->where('permission_name', $value['permission_name'])
                 ->where('module', $value['module'])
@@ -186,9 +186,9 @@ if (! function_exists('loadCachedAdminRoutes')) {
     {
         if (routesAreCached()) {
             if (app()->runningInConsole()) {
-                require CatchAdmin::getRouteCachePath();
+                require BlueStarAdmin::getRouteCachePath();
             } elseif (isRequestFromDashboard()) {
-                require CatchAdmin::getRouteCachePath();
+                require BlueStarAdmin::getRouteCachePath();
             } else {
                 //
             }
@@ -199,6 +199,6 @@ if (! function_exists('loadCachedAdminRoutes')) {
 if (! function_exists('routesAreCached')) {
     function routesAreCached(): bool
     {
-        return file_exists(CatchAdmin::getRouteCachePath());
+        return file_exists(BlueStarAdmin::getRouteCachePath());
     }
 }

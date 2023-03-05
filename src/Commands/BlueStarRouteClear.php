@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
-use Catch\CatchAdmin;
+use BlueStar\BlueStarAdmin;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
-class CatchRouteClear extends Command
+class BlueStarRouteClear extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $signature = 'catch:route:clear';
+    protected $signature = 'bluestar:route:clear';
 
     /**
      * The console command description.
@@ -53,6 +53,6 @@ class CatchRouteClear extends Command
     {
         $this->files->delete($this->laravel->getCachedRoutesPath());
 
-        $this->files->delete(CatchAdmin::getRouteCachePath());
+        $this->files->delete(BlueStarAdmin::getRouteCachePath());
     }
 }

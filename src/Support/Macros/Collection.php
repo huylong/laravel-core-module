@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Macros;
+namespace BlueStar\Support\Macros;
 
-use Catch\Support\Tree;
+use BlueStar\Support\Tree;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection as LaravelCollection;
 

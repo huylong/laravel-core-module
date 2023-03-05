@@ -8,22 +8,22 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands\Migrate;
+namespace BlueStar\Commands\Migrate;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use PhpParser\Node\Name;
 
-class SeederMake extends CatchCommand
+class SeederMake extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:seeder {module} {name}';
+    protected $signature = 'bluestar:make:seeder {module} {name}';
 
     /**
      * The console command description.
@@ -37,12 +37,12 @@ class SeederMake extends CatchCommand
      *
      * @return void
      * @throws \Exception
-     * @author CatchAdmin
+     * @author BlueStarAdmin
      * @time 2021年08月01日
      */
     public function handle(): void
     {
-        $seederPath = CatchAdmin::getModuleSeederPath($this->argument('module'));
+        $seederPath = BlueStarAdmin::getModuleSeederPath($this->argument('module'));
 
         $file = $seederPath.$this->getSeederName().'.php';
 

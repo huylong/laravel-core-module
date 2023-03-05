@@ -10,18 +10,18 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Catch\Facade\Module;
+use BlueStar\Facade\Module;
 
 use function Termwind\ask;
 use function Termwind\render;
 
-abstract class CatchCommand extends Command
+abstract class BlueStarCommand extends Command
 {
     /**
      * @var string
@@ -49,7 +49,7 @@ abstract class CatchCommand extends Command
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         if ($input->hasArgument('module')
-            && ! Module::getEnabled()->pluck('name')->merge(Collection::make(config('catch.module.default')))->contains(lcfirst($input->getArgument('module')))
+            && ! Module::getEnabled()->pluck('name')->merge(Collection::make(config('bluestar.module.default')))->contains(lcfirst($input->getArgument('module')))
         ) {
             $this->error(sprintf('Module [%s] Not Found', $input->getArgument('module')));
             exit;
@@ -73,7 +73,7 @@ abstract class CatchCommand extends Command
         $answer = ask(
             <<<HTML
             <div>
-                <div class="px-1 bg-indigo-700">CatchAdmin</div>
+                <div class="px-1 bg-indigo-700">BlueStarAdmin</div>
                 <em class="ml-1">
                     <em class="text-green-700">$question</em>
                     $_default
@@ -106,7 +106,7 @@ HTML
         render(
             <<<HTML
             <div>
-                <div class="px-1 bg-indigo-700">CatchAdmin</div>
+                <div class="px-1 bg-indigo-700">BlueStarAdmin</div>
                 <em class="ml-1">
                     <em class="text-green-700">$string</em>
                 </em>
@@ -127,7 +127,7 @@ HTML
         render(
             <<<HTML
             <div>
-                <div class="px-1 bg-indigo-700">CatchAdmin</div>
+                <div class="px-1 bg-indigo-700">BlueStarAdmin</div>
                 <em class="ml-1">
                     <em class="text-rose-700">$string</em>
                 </em>

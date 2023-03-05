@@ -8,9 +8,9 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
-use Catch\CatchAdmin;
+use BlueStar\BlueStarAdmin;
 use Illuminate\Console\Application;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Connectors\ConnectionFactory;
@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Str;
-use Catch\Support\Composer;
+use BlueStar\Support\Composer;
 
-class InstallCommand extends CatchCommand
+class InstallCommand extends BlueStarCommand
 {
-    protected $signature = 'catch:install';
+    protected $signature = 'bluestar:install';
 
-    protected $description = 'install catch admin';
+    protected $description = 'install bluestar admin';
 
     /**
      * @var array|string[]
@@ -43,13 +43,13 @@ class InstallCommand extends CatchCommand
     {
         try {
             // 如果没有 .env 文件
-           if (! File::exists(app()->environmentFile())) {
-               $this->detectionEnvironment();
+            if (!File::exists(app()->environmentFile())) {
+                $this->detectionEnvironment();
 
-               $this->copyEnvFile();
+                $this->copyEnvFile();
 
-               $this->askForCreatingDatabase();
-           }
+                $this->askForCreatingDatabase();
+            }
 
             $this->publishConfig();
             $this->installed();
@@ -87,7 +87,7 @@ class InstallCommand extends CatchCommand
             ->each(function ($extension) use ($loadedExtensions, &$continue) {
                 $extension = strtolower($extension);
 
-                if (! $loadedExtensions->contains($extension)) {
+                if (!$loadedExtensions->contains($extension)) {
                     $this->error("$extension extension 未安装");
                 }
             });
@@ -113,7 +113,7 @@ class InstallCommand extends CatchCommand
      */
     private function createDatabase(string $databaseName): void
     {
-        $databaseConfig = config('database.connections.'.DB::getDefaultConnection());
+        $databaseConfig = config('database.connections.' . DB::getDefaultConnection());
 
         $databaseConfig['database'] = null;
 
@@ -127,12 +127,12 @@ class InstallCommand extends CatchCommand
      */
     protected function copyEnvFile(): void
     {
-        if (! File::exists(app()->environmentFilePath())) {
-            File::copy(app()->environmentFilePath().'.example', app()->environmentFilePath());
+        if (!File::exists(app()->environmentFilePath())) {
+            File::copy(app()->environmentFilePath() . '.example', app()->environmentFilePath());
         }
 
-        if (! File::exists(app()->environmentFilePath())) {
-            $this->error('【.env】创建失败, 请重新尝试或者手动创建！');
+        if (!File::exists(app()->environmentFilePath())) {
+            $this->error('【.env】Creation failed. Please try again or create manually！');
         }
 
         File::put(app()->environmentFile(), implode("\n", explode("\n", $this->getEnvFileContent())));
@@ -158,18 +158,18 @@ class InstallCommand extends CatchCommand
         try {
             Process::run(Application::formatCommandString('key:generate'))->throw();
 
-            Process::run(Application::formatCommandString('vendor:publish --tag=catch-config'))->throw();
+            Process::run(Application::formatCommandString('vendor:publish --tag=bluestar-config'))->throw();
 
             Process::run(Application::formatCommandString('vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"'))->throw();
 
-            Process::run(Application::formatCommandString('catch:migrate user'))->throw();
+            Process::run(Application::formatCommandString('bluestar:migrate user'))->throw();
 
-            Process::run(Application::formatCommandString('catch:migrate develop'))->throw();
+            Process::run(Application::formatCommandString('bluestar:migrate develop'))->throw();
 
             Process::run(Application::formatCommandString('migrate'))->throw();
 
-            Process::run(Application::formatCommandString('catch:db:seed user'))->throw();
-        }catch (\Exception|\Throwable $e) {
+            Process::run(Application::formatCommandString('bluestar:db:seed user'))->throw();
+        } catch (\Exception | \Throwable $e) {
             $this->error($e->getMessage());
             exit;
         }
@@ -182,24 +182,24 @@ class InstallCommand extends CatchCommand
     {
         $appUrl = $this->askFor('请配置应用的 URL');
 
-        if ($appUrl && ! Str::contains($appUrl, 'http://') && ! Str::contains($appUrl, 'https://')) {
-            $appUrl = 'http://'.$appUrl;
+        if ($appUrl && !Str::contains($appUrl, 'http://') && !Str::contains($appUrl, 'https://')) {
+            $appUrl = 'http://' . $appUrl;
         }
 
-        $databaseName = $this->askFor('请输入数据库名称');
+        $databaseName = $this->askFor('Please enter the name of the database.');
 
-        $prefix = $this->askFor('请输入数据库表前缀', '');
+        $prefix = $this->askFor('Please enter the database table prefix.', '');
 
-        $dbHost = $this->askFor('请输入数据库主机地址', '127.0.0.1');
+        $dbHost = $this->askFor('Please enter the database host address.', '127.0.0.1');
 
-        $dbPort = $this->askFor('请输入数据的端口号', 3306);
+        $dbPort = $this->askFor('Please enter the port number of the database.', 3306);
 
-        $dbUsername = $this->askFor('请输入数据的用户名', 'root');
+        $dbUsername = $this->askFor('Please enter the username of the database.', 'root');
 
-        $dbPassword = $this->askFor('请输入数据库密码');
+        $dbPassword = $this->askFor('Please enter the database password.');
 
-        if (! $dbPassword) {
-            $dbPassword = $this->askFor('确认数据库密码为空吗?');
+        if (!$dbPassword) {
+            $dbPassword = $this->askFor('Are you sure you want to leave the database password blank?');
         }
 
         // set env
@@ -228,11 +228,11 @@ class InstallCommand extends CatchCommand
             LoadConfiguration::class
         ]);
 
-        $this->info("正在创建数据库[$databaseName]...");
+        $this->info("Creating database [$databaseName]...");
 
         $this->createDatabase($databaseName);
 
-        $this->info("创建数据库[$databaseName] 成功");
+        $this->info("Create database [$databaseName] Success");
     }
 
     /**
@@ -258,15 +258,15 @@ class InstallCommand extends CatchCommand
      */
     protected function addPsr4Autoload()
     {
-        $composerFile = base_path().DIRECTORY_SEPARATOR.'composer.json';
+        $composerFile = base_path() . DIRECTORY_SEPARATOR . 'composer.json';
 
-        $composerJson = json_decode(File::get(base_path().DIRECTORY_SEPARATOR.'composer.json'), true);
+        $composerJson = json_decode(File::get(base_path() . DIRECTORY_SEPARATOR . 'composer.json'), true);
 
-        $composerJson['autoload']['psr-4'][CatchAdmin::getModuleRootNamespace()] = str_replace('\\', '/', config('catch.module.root'));
+        $composerJson['autoload']['psr-4'][BlueStarAdmin::getModuleRootNamespace()] = str_replace('\\', '/', config('bluestar.module.root'));
 
         File::put($composerFile, json_encode($composerJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
-        $this->info('composer dump autoload..., 请耐心等待');
+        $this->info('composer dump autoload..., Please be patient');
 
         app(Composer::class)->dumpAutoloads();
     }
@@ -278,20 +278,9 @@ class InstallCommand extends CatchCommand
     {
         $this->addPsr4Autoload();
 
-        $this->info('🎉 CatchAdmin 已安装, 欢迎!');
+        $this->info('🎉 BlueStarAdmin Installed successfully, welcome!');
 
-        $this->output->info(sprintf('
- /------------------------ welcome ----------------------------\
-|               __       __       ___       __          _      |
-|   _________ _/ /______/ /_     /   | ____/ /___ ___  (_)___  |
-|  / ___/ __ `/ __/ ___/ __ \   / /| |/ __  / __ `__ \/ / __ \ |
-| / /__/ /_/ / /_/ /__/ / / /  / ___ / /_/ / / / / / / / / / / |
-| \___/\__,_/\__/\___/_/ /_/  /_/  |_\__,_/_/ /_/ /_/_/_/ /_/  |
-|                                                              |
- \ __ __ __ __ _ __ _ __ enjoy it ! _ __ __ __ __ __ __ ___ _ @
- 版本: %s
- 初始账号: catch@admin.com
- 初始密码: catchadmin', CatchAdmin::VERSION));
+        $this->output->info(sprintf(BlueStarAdmin::VERSION));
 
         $this->support();
     }
@@ -303,22 +292,5 @@ class InstallCommand extends CatchCommand
      */
     protected function support(): void
     {
-        $answer = $this->askFor('支持我们! 感谢在 Github 上 star 该项目', 'yes', true);
-
-        if (in_array(strtolower($answer), ['yes', 'y'])) {
-            if (PHP_OS_FAMILY == 'Darwin') {
-                exec('open https://github.com/JaguarJack/catch-admin');
-            }
-            if (PHP_OS_FAMILY == 'Windows') {
-                exec('start https://github.com/JaguarJack/catch-admin');
-            }
-            if (PHP_OS_FAMILY == 'Linux') {
-                exec('xdg-open https://github.com/JaguarJack/catch-admin');
-            }
-        }
-
-        $this->info('支 持: https://github.com/jaguarjack/catchadmin');
-        $this->info('文 档: https://catchadmin.com/docs/3.0/intro');
-        $this->info('官 网: https://catchadmin.com');
     }
 }

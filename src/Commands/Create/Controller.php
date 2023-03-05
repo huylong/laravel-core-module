@@ -10,35 +10,35 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands\Create;
+namespace BlueStar\Commands\Create;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 ;
 
-class Controller extends CatchCommand
+class Controller extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:controller {module} {name}';
+    protected $signature = 'bluestar:make:controller {module} {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'create catch controller';
+    protected $description = 'create bluestar controller';
 
 
     public function handle()
     {
-        $controllerPath = CatchAdmin::getModuleControllerPath($this->argument('module'));
+        $controllerPath = BlueStarAdmin::getModuleControllerPath($this->argument('module'));
 
         $file = $controllerPath.$this->getControllerFile();
 
@@ -52,7 +52,7 @@ class Controller extends CatchCommand
 
         File::put($file, Str::of($this->getStubContent())->replace([
             '{namespace}', '{controller}'
-        ], [trim(CatchAdmin::getModuleControllerNamespace($this->argument('module')), '\\'), $this->getControllerName()])->toString());
+        ], [trim(BlueStarAdmin::getModuleControllerNamespace($this->argument('module')), '\\'), $this->getControllerName()])->toString());
 
         if (File::exists($file)) {
             $this->info($file.' has been created');

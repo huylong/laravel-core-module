@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Module\Driver;
+namespace BlueStar\Support\Module\Driver;
 
-use Catch\CatchAdmin;
-use Catch\Contracts\ModuleRepositoryInterface;
-use Catch\Exceptions\FailedException;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Contracts\ModuleRepositoryInterface;
+use BlueStar\Exceptions\FailedException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -76,7 +76,7 @@ class FileDriver implements ModuleRepositoryInterface
 
         $this->hasSameModule($module, $modules);
 
-        $module['provider'] = sprintf('\\%s', CatchAdmin::getModuleServiceProvider($module['path']));
+        $module['provider'] = sprintf('\\%s', BlueStarAdmin::getModuleServiceProvider($module['path']));
         $module['version'] = '1.0.0';
         $module['enable'] = true;
 

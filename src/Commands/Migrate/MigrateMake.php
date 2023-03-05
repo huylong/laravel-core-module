@@ -8,21 +8,21 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands\Migrate;
+namespace BlueStar\Commands\Migrate;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
-use Illuminate\Support\Facades\File;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Cds\BlueStarCommand;
+use Illuminate\Sommanupport\Facades\File;
 use Illuminate\Support\Str;
 
-class MigrateMake extends CatchCommand
+class MigrateMake extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:migration {module : The module of the migration created at}
+    protected $signature = 'bluestar:make:migration {module : The module of the migration created at}
         {table : The name of the table to migration}';
 
     /**
@@ -40,7 +40,7 @@ class MigrateMake extends CatchCommand
      */
     public function handle(): void
     {
-        $migrationPath = CatchAdmin::getModuleMigrationPath($this->argument('module'));
+        $migrationPath = BlueStarAdmin::getModuleMigrationPath($this->argument('module'));
 
         $file = $migrationPath.$this->getMigrationFile();
 

@@ -2,10 +2,10 @@
 
 namespace {namespace};
 
-use Catch\Base\CatchController;
+use BlueStar\Base\BlueStarController;
 use Illuminate\Http\Request;
 
-class {controller} extends CatchController
+class {controller} extends BlueStarController
 {
     public function index(Request $request)
     {

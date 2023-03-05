@@ -1,9 +1,9 @@
 <?php
 
-namespace Catch\Support\Module;
+namespace BlueStar\Support\Module;
 
-use Catch\Contracts\ModuleRepositoryInterface;
-use Catch\Support\Composer;
+use BlueStar\Contracts\ModuleRepositoryInterface;
+use BlueStar\Support\Composer;
 use Illuminate\Support\Facades\Artisan;
 
 /**
@@ -32,7 +32,7 @@ abstract class Installer
      */
     protected function migrate(): void
     {
-        Artisan::call('catch:migrate', [
+        Artisan::call('bluestar:migrate', [
             'module' => $this->info()['name']
         ]);
     }
@@ -42,7 +42,7 @@ abstract class Installer
      */
     protected function seed():void
     {
-        Artisan::call('catch:db:seed', [
+        Artisan::call('bluestar:db:seed', [
             'module' => $this->info()['name']
         ]);
     }

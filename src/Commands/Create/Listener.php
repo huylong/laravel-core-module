@@ -10,35 +10,35 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands\Create;
+namespace BlueStar\Commands\Create;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 ;
 
-class Listener extends CatchCommand
+class Listener extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:listener {module} {name}';
+    protected $signature = 'bluestar:make:listener {module} {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'create catch module event';
+    protected $description = 'create bluestar module event';
 
 
     public function handle()
     {
-        $eventPath = CatchAdmin::getModuleListenersPath($this->argument('module'));
+        $eventPath = BlueStarAdmin::getModuleListenersPath($this->argument('module'));
 
         $file = $eventPath.$this->getListenerFile();
 
@@ -53,7 +53,7 @@ class Listener extends CatchCommand
         File::put($file, Str::of($this->getStubContent())->replace([
             '{namespace}', '{listener}'
         ], [
-            trim(CatchAdmin::getModuleListenersNamespace($this->argument('module')), '\\'),
+            trim(BlueStarAdmin::getModuleListenersNamespace($this->argument('module')), '\\'),
 
             $this->getListenerName()])->toString());
 

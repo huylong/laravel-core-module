@@ -10,14 +10,14 @@
 
 declare(strict_types=1);
 
-namespace Catch;
+namespace BlueStar;
 
-use Catch\Support\Module\Installer;
+use BlueStar\Support\Module\Installer;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-class CatchAdmin
+class BlueStarAdmin
 {
     public const VERSION = '0.1.6';
 
@@ -37,7 +37,7 @@ class CatchAdmin
      */
     public static function moduleRootPath(): string
     {
-        return self::makeDir(base_path(config('catch.module.root')).DIRECTORY_SEPARATOR);
+        return self::makeDir(base_path(config('bluestar.module.root')).DIRECTORY_SEPARATOR);
     }
 
     /**
@@ -136,7 +136,7 @@ class CatchAdmin
      */
     public static function getModuleRootNamespace(): string
     {
-        return config('catch.module.namespace').'\\';
+        return config('bluestar.module.namespace').'\\';
     }
 
     /**
@@ -435,6 +435,6 @@ class CatchAdmin
      */
     public static function getRouteCachePath(): string
     {
-        return config('catch.route.cache_path', base_path('bootstrap/cache') . DIRECTORY_SEPARATOR . 'admin_route_cache.php');
+        return config('bluestar.route.cache_path', base_path('bootstrap/cache') . DIRECTORY_SEPARATOR . 'admin_route_cache.php');
     }
 }

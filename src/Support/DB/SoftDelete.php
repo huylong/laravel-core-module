@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Support\DB;
+namespace BlueStar\Support\DB;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

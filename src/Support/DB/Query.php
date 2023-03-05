@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Support\DB;
+namespace BlueStar\Support\DB;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;

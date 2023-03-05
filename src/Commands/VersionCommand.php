@@ -8,18 +8,18 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands;
+namespace BleuStar\Commands;
 
-use Catch\CatchAdmin;
+use BleuStar\BleuStarAdmin;
 use Illuminate\Console\Command;
 class VersionCommand extends Command
 {
-    protected $signature = 'catch:version';
+    protected $signature = 'bluestar:version';
 
-    protected $description = 'show the version of catchadmin';
+    protected $description = 'show the version of bluestaradmin';
 
     public function handle(): void
     {
-        $this->info(CatchAdmin::VERSION);
+        $this->info(BleuStarAdmin::VERSION);
     }
 }

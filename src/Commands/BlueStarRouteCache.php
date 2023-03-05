@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
-use Catch\CatchAdmin;
+use BlueStar\BlueStarAdmin;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Routing\RouteCollection;
-class CatchRouteCache extends Command
+class BlueStarRouteCache extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $signature = 'catch:route:cache';
+    protected $signature = 'bluestar:route:cache';
 
     /**
      * The console command description.
@@ -69,7 +69,7 @@ class CatchRouteCache extends Command
      */
     public function handle(): void
     {
-        $this->callSilent('catch:route:clear');
+        $this->callSilent('bluestar:route:clear');
 
         $routes = $this->getFreshApplicationRoutes();
 
@@ -194,6 +194,6 @@ TEXT;
      */
     protected function getAdminRouteCachePath(): string
     {
-        return CatchAdmin::getRouteCachePath();
+        return BlueStarAdmin::getRouteCachePath();
     }
 }

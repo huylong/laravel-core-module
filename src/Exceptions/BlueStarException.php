@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace Catch\Exceptions;
+namespace BlueStar\Exceptions;
 
-use Catch\Enums\Enum;
+use BlueStar\Enums\Enum;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Catch\Enums\Code;
+use BlueStar\Enums\Code;
 
-abstract class CatchException extends HttpException
+abstract class BlueStarException extends HttpException
 {
     protected $code = 0;
 

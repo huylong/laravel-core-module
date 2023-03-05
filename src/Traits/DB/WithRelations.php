@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Traits\DB;
+namespace BlueStar\Traits\DB;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

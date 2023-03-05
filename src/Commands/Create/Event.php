@@ -10,35 +10,35 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands\Create;
+namespace BlueStar\Commands\Create;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 ;
 
-class Event extends CatchCommand
+class Event extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:make:event {module} {name}';
+    protected $signature = 'bluestar:make:event {module} {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'create catch module event';
+    protected $description = 'create bluestar module event';
 
 
     public function handle()
     {
-        $eventPath = CatchAdmin::getModuleEventPath($this->argument('module'));
+        $eventPath = BlueStarAdmin::getModuleEventPath($this->argument('module'));
 
         $file = $eventPath.$this->getEventFile();
 
@@ -52,7 +52,7 @@ class Event extends CatchCommand
 
         File::put($file, Str::of($this->getStubContent())->replace([
             '{namespace}', '{event}'
-        ], [trim(CatchAdmin::getModuleEventsNamespace($this->argument('module')), '\\'), $this->getEventName()])->toString());
+        ], [trim(BlueStarAdmin::getModuleEventsNamespace($this->argument('module')), '\\'), $this->getEventName()])->toString());
 
         if (File::exists($file)) {
             $this->info($file.' has been created');

@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Module\Driver;
+namespace BlueStar\Support\Module\Driver;
 
-use Catch\CatchAdmin;
-use Catch\Contracts\ModuleRepositoryInterface;
-use Catch\Enums\Status;
-use Catch\Exceptions\FailedException;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Contracts\ModuleRepositoryInterface;
+use BlueStar\Enums\Status;
+use BlueStar\Exceptions\FailedException;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -62,7 +62,7 @@ class DatabaseDriver implements ModuleRepositoryInterface
             'path' => $module['path'],
             'description' => $module['desc'],
             'keywords' => $module['keywords'],
-            'provider' => sprintf('\\%s%s', CatchAdmin::getModuleNamespace($module['name']), ucfirst($module['name']).'ServiceProvider'),
+            'provider' => sprintf('\\%s%s', BlueStarAdmin::getModuleNamespace($module['name']), ucfirst($module['name']).'ServiceProvider'),
         ]);
     }
 
@@ -171,7 +171,7 @@ class DatabaseDriver implements ModuleRepositoryInterface
             {
                 parent::__construct($attributes);
 
-                $this->table = Container::getInstance()->make('config')->get('catch.module.driver.table_name');
+                $this->table = Container::getInstance()->make('config')->get('bluestar.module.driver.table_name');
             }
         };
     }

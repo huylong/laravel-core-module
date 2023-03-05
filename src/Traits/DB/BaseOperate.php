@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Catch\Traits\DB;
+namespace BlueStar\Traits\DB;
 
-use Catch\Enums\Status;
-use Catch\Exceptions\FailedException;
+use BlueStar\Enums\Status;
+use BlueStar\Exceptions\FailedException;
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;

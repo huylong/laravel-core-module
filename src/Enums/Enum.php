@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Enums;
+namespace BlueStar\Enums;
 
 interface Enum
 {

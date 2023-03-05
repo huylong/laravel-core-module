@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Catch\Exceptions;
+namespace BlueStar\Exceptions;
 
-use Catch\Enums\Code;
+use BlueStar\Enums\Code;
 
-class FailedException extends CatchException
+class FailedException extends BlueStarException
 {
     protected $code = Code::FAILED;
 }

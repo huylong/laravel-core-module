@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Module;
+namespace BlueStar\Support\Module;
 
-use Catch\Support\Module\Driver\DatabaseDriver;
-use Catch\Support\Module\Driver\FileDriver;
+use BlueStar\Support\Module\Driver\DatabaseDriver;
+use BlueStar\Support\Module\Driver\FileDriver;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Manager;
@@ -36,7 +36,7 @@ class ModuleManager extends Manager
     public function getDefaultDriver(): string|null
     {
         // TODO: Implement getDefaultDriver() method.
-        return $this->config->get('catch.module.driver.default', $this->defaultDriver());
+        return $this->config->get('bluestar.module.driver.default', $this->defaultDriver());
     }
 
     /**

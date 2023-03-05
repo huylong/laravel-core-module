@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
 use Closure;
 use Illuminate\Console\Command;
@@ -19,14 +19,14 @@ use ReflectionFunction;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Terminal;
 
-class CatchRouteList extends Command
+class BlueStarRouteList extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'catch:route:list';
+    protected $name = 'bluestar:route:list';
 
     /**
      * The console command description.

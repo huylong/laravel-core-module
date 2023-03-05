@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Catch\Base;
+namespace BlueStar\Base;
 
-use Catch\Support\DB\SoftDelete;
-use Catch\Traits\DB\BaseOperate;
-use Catch\Traits\DB\ScopeTrait;
-use Catch\Traits\DB\Trans;
+use BlueStar\Support\DB\SoftDelete;
+use BlueStar\Traits\DB\BaseOperate;
+use BlueStar\Traits\DB\ScopeTrait;
+use BlueStar\Traits\DB\Trans;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
@@ -26,7 +26,7 @@ use Illuminate\Database\Query\Builder;
  * @mixin Builder
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-abstract class CatchModel extends Model
+abstract class BlueStarModel extends Model
 {
     use BaseOperate, Trans, SoftDeletes, ScopeTrait;
 

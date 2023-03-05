@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Macros;
+namespace BlueStar\Support\Macros;
 
 /**
  * boot

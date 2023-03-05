@@ -1,8 +1,8 @@
 <?php
 
-namespace Catch\Support;
+namespace BlueStar\Support;
 
-use Catch\Exceptions\FailedException;
+use BlueStar\Exceptions\FailedException;
 use Illuminate\Support\Composer as LaravelComposer;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;

@@ -1,7 +1,6 @@
 <?php
 
-// +----------------------------------------------------------------------
-// | CatchAdmin
+
 // +----------------------------------------------------------------------
 // | Copyright (c) 2023 ~ now https://daygiare.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -11,7 +10,7 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | catch-admin default middleware
+    | default middleware
     |--------------------------------------------------------------------------
     |
     | where you can set default middlewares
@@ -21,17 +20,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | catch-admin catch_auth_middleware_alias
+    | bluestar_auth_middleware_alias
     |--------------------------------------------------------------------------
     |
     | where you can set default middlewares
     |
     */
-    'catch_auth_middleware_alias' => [],
+    'bluestar_auth_middleware_alias' => [],
 
     /*
-    |--------------------------------------------------------------------------
-    | catch-admin super admin id
     |--------------------------------------------------------------------------
     |
     | where you can set super admin id
@@ -43,9 +40,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | catch-admin module setting
-    |--------------------------------------------------------------------------
-    |
     | the root where module generate
     | the namespace is module root namespace
     | the default dirs is module generate default dirs
@@ -72,7 +66,7 @@ return [
         // storage module information
         // which driver should be used?
         'driver' => [
-            // currently, catchadmin support file and database
+            // currently, support file and database
             // the default is driver
             'default' => 'file',
 
@@ -89,18 +83,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | catch-admin response
-    |--------------------------------------------------------------------------
     */
     'response' => [
-        // it's a controller middleware, it's set in CatchController
-        // if you not need json response, don't extend CatchController
-        'always_json' => \Catch\Middleware\JsonResponseMiddleware::class,
+        // it's a controller middleware, it's set in BlueStarController
+        // if you not need json response, don't extend BlueStarController
+        'always_json' => \BlueStar\Middleware\JsonResponseMiddleware::class,
 
         // response listener
         // it  listens [RequestHandled] event, if you don't need this
         // you can change this config
-        'request_handled_listener' => \Catch\Listeners\RequestHandledListener::class
+        'request_handled_listener' => \BlueStar\Listeners\RequestHandledListener::class
     ],
 
     /*
@@ -126,8 +118,8 @@ return [
         'prefix' => 'api',
 
         'middlewares' => [
-            \Catch\Middleware\AuthMiddleware::class,
-            \Catch\Middleware\JsonResponseMiddleware::class
+            \BlueStar\Middleware\AuthMiddleware::class,
+            \BlueStar\Middleware\JsonResponseMiddleware::class
         ],
 
         // 'cache_path' => base_path('bootstrap/cache') . DIRECTORY_SEPARATOR . 'admin_route_cache.php'

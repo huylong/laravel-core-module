@@ -8,22 +8,22 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
-use Catch\CatchAdmin;
-use Catch\Facade\Module;
-use Catch\Support\Tree;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Facade\Module;
+use BlueStar\Support\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Illuminate\Support\Facades\DB;
 
-class ExportMenuCommand extends CatchCommand
+class ExportMenuCommand extends BlueStarCommand
 {
-    protected $signature = 'catch:export:menu {module} {table?} {--p}';
+    protected $signature = 'bluestar:export:menu {module} {table?} {--p}';
 
-    protected $description = 'catch export table data';
+    protected $description = 'bluestar export table data';
 
 
     public function handle(): void
@@ -67,6 +67,6 @@ class ExportMenuCommand extends CatchCommand
 
         $stub = str_replace('{CLASS}', $class, $stub);
 
-        File::put(CatchAdmin::getModuleSeederPath($module) . $class .'.php', str_replace('{menus}', $data, $stub));
+        File::put(BlueStarAdmin::getModuleSeederPath($module) . $class .'.php', str_replace('{menus}', $data, $stub));
     }
 }

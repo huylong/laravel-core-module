@@ -1,8 +1,8 @@
 <?php
 
-namespace Catch\Listeners;
+namespace BlueStar\Listeners;
 
-use Catch\Enums\Code;
+use BlueStar\Enums\Code;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Illuminate\Http\JsonResponse;

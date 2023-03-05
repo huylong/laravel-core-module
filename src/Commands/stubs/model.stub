@@ -2,7 +2,7 @@
 
 namespace {namespace};
 
-use Catch\Base\CatchModel as Model;
+use BlueStar\Base\BlueStarModel as Model;
 
 
 class {model} extends Model

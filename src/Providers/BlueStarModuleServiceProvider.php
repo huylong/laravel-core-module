@@ -8,16 +8,16 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Providers;
+namespace BlueStar\Providers;
 
-use Catch\CatchAdmin;
+use BlueStar\BlueStarAdmin;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Finder\Finder;
 
-abstract class CatchModuleServiceProvider extends ServiceProvider
+abstract class BlueStarModuleServiceProvider extends ServiceProvider
 {
     protected array $events = [];
 
@@ -48,13 +48,13 @@ abstract class CatchModuleServiceProvider extends ServiceProvider
     protected function loadMiddlewares()
     {
         if (! empty($middlewares = $this->middlewares())) {
-            $route = $this->app['config']->get('catch.route', [
+            $route = $this->app['config']->get('bluestar.route', [
                 'middlewares' => []
             ]);
 
             $route['middlewares']= array_merge($route['middlewares'], $middlewares);
 
-            $this->app['config']->set('catch.route', $route);
+            $this->app['config']->set('bluestar.route', $route);
         }
     }
 
@@ -94,11 +94,11 @@ abstract class CatchModuleServiceProvider extends ServiceProvider
      */
     protected function loadModuleRoute(): void
     {
-        $routes = $this->app['config']->get('catch.module.routes', []);
+        $routes = $this->app['config']->get('bluestar.module.routes', []);
 
-        $routes[] = CatchAdmin::getModuleRoutePath($this->moduleName());
+        $routes[] = BlueStarAdmin::getModuleRoutePath($this->moduleName());
 
-        $this->app['config']->set('catch.module.routes', $routes);
+        $this->app['config']->set('bluestar.module.routes', $routes);
     }
 
     /**
@@ -116,6 +116,6 @@ abstract class CatchModuleServiceProvider extends ServiceProvider
      */
     protected function configPath(): string
     {
-        return CatchAdmin::getModulePath($this->moduleName()) . 'config' . DIRECTORY_SEPARATOR;
+        return BlueStarAdmin::getModulePath($this->moduleName()) . 'config' . DIRECTORY_SEPARATOR;
     }
 }

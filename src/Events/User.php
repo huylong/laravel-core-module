@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\Events;
+namespace BlueStar\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Auth\Authenticatable;

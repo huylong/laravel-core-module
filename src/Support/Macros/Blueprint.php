@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Catch\Support\Macros;
+namespace BlueStar\Support\Macros;
 
 use Illuminate\Database\Schema\Blueprint as LaravelBlueprint;
 

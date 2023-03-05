@@ -13,7 +13,7 @@ return new class () extends Migration {
     public function up()
     {
         //
-        Schema::create(config('catch.module.table_name'), function (Blueprint $table) {
+        Schema::create(config('bluestar.module.table_name'), function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('title')->comment('Module Title');
@@ -44,6 +44,6 @@ return new class () extends Migration {
     public function down()
     {
         //
-        Schema::dropIfExists(config('catch.module.table_name'));
+        Schema::dropIfExists(config('bluestar.module.table_name'));
     }
 };

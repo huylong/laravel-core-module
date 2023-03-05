@@ -8,29 +8,29 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands\Migrate;
+namespace BlueStar\Commands\Migrate;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-class MigrateRun extends CatchCommand
+class MigrateRun extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:migrate {module} {--force}';
+    protected $signature = 'bluestar:migrate {module} {--force}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'migrate catch module';
+    protected $description = 'migrate bluestar module';
 
     /**
      * Create a new command instance.
@@ -51,9 +51,9 @@ class MigrateRun extends CatchCommand
     {
         $module = $this->argument('module');
 
-        if (File::isDirectory(CatchAdmin::getModuleMigrationPath($module))) {
-            foreach (File::files(CatchAdmin::getModuleMigrationPath($module)) as $file) {
-                $path = Str::of(CatchAdmin::getModuleRelativePath(CatchAdmin::getModuleMigrationPath($module)))
+        if (File::isDirectory(BlueStarAdmin::getModuleMigrationPath($module))) {
+            foreach (File::files(BlueStarAdmin::getModuleMigrationPath($module)) as $file) {
+                $path = Str::of(BlueStarAdmin::getModuleRelativePath(BlueStarAdmin::getModuleMigrationPath($module)))
 
                     ->remove('.')->append($file->getFilename());
 

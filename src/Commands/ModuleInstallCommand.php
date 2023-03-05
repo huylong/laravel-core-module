@@ -8,19 +8,19 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands;
+namespace BlueStar\Commands;
 
-use Catch\CatchAdmin;
-use Catch\Facade\Module;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Facade\Module;
 use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ModuleInstallCommand extends CatchCommand
+class ModuleInstallCommand extends BlueStarCommand
 {
-    protected $signature = 'catch:module:install {module} {--f}';
+    protected $signature = 'bluestar:module:install {module} {--f}';
 
-    protected $description = 'install catch module';
+    protected $description = 'install bluestar module';
 
     /**
      * @param InputInterface $input
@@ -31,7 +31,7 @@ class ModuleInstallCommand extends CatchCommand
     {
         if (! $this->option('f')) {
             if ($input->hasArgument('module')
-                && Module::getEnabled()->pluck('name')->merge(Collection::make(config('catch.module.default')))->contains(lcfirst($input->getArgument('module')))
+                && Module::getEnabled()->pluck('name')->merge(Collection::make(config('bluestar.module.default')))->contains(lcfirst($input->getArgument('module')))
             ) {
                 $this->error(sprintf('Module [%s] Has installed', $input->getArgument('module')));
                 exit;
@@ -41,7 +41,7 @@ class ModuleInstallCommand extends CatchCommand
 
     public function handle(): void
     {
-        $installer = CatchAdmin::getModuleInstaller($this->argument('module'));
+        $installer = BlueStarAdmin::getModuleInstaller($this->argument('module'));
 
         $installer->install();
     }

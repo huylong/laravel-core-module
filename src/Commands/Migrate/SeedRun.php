@@ -8,27 +8,27 @@
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
-namespace Catch\Commands\Migrate;
+namespace BlueStar\Commands\Migrate;
 
-use Catch\CatchAdmin;
-use Catch\Commands\CatchCommand;
+use BlueStar\BlueStarAdmin;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Support\Facades\File;
 
-class SeedRun extends CatchCommand
+class SeedRun extends BlueStarCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'catch:db:seed {module} {--seeder=}';
+    protected $signature = 'bluestar:db:seed {module} {--seeder=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'catch db seed';
+    protected $description = 'bluestar db seed';
 
     /**
      * Create a new command instance.
@@ -47,7 +47,7 @@ class SeedRun extends CatchCommand
      */
     public function handle(): void
     {
-        $files = File::allFiles(CatchAdmin::getModuleSeederPath($this->argument('module')));
+        $files = File::allFiles(BlueStarAdmin::getModuleSeederPath($this->argument('module')));
 
         $fileNames = [];
 
