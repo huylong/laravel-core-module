@@ -1,6 +1,6 @@
 {
-    "name": "catchadmin/core",
-    "description": "catch admin core package",
+    "name": "huylong/laravel-module",
+    "description": "blog laravel core package",
     "type": "library",
     "require": {
         "php": "^8.1",
@@ -19,8 +19,8 @@
     },
     "authors": [
         {
-            "name": "JaguarJack",
-            "email": "njphper@gmail.com"
+            "name": "HuyPham",
+            "email": "huyad1102@gmail.com"
         }
     ],
     "extra": {

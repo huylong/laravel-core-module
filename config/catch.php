@@ -19,9 +19,7 @@ return [
     | where you can set default middlewares
     |
     */
-    'middleware_group' => [
-
-    ],
+    'middleware_group' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -31,9 +29,7 @@ return [
     | where you can set default middlewares
     |
     */
-    'catch_auth_middleware_alias' => [
-
-    ],
+    'catch_auth_middleware_alias' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -64,15 +60,15 @@ return [
         'default' => ['develop', 'user', 'common'],
 
         'default_dirs' => [
-            'Http'.DIRECTORY_SEPARATOR,
+            'Http' . DIRECTORY_SEPARATOR,
 
-            'Http'.DIRECTORY_SEPARATOR.'Requests'.DIRECTORY_SEPARATOR,
+            'Http' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR,
 
-            'Http'.DIRECTORY_SEPARATOR.'Controllers'.DIRECTORY_SEPARATOR,
+            'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR,
 
-            'Models'.DIRECTORY_SEPARATOR,
+            'Models' . DIRECTORY_SEPARATOR,
 
-            'views'.DIRECTORY_SEPARATOR,
+            'views' . DIRECTORY_SEPARATOR,
         ],
 
         // storage module information
