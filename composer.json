@@ -1,5 +1,5 @@
 {
-    "name": "huylong/laravel-module",
+    "name": "huylong/laravel-core-module",
     "description": "blog laravel core package",
     "type": "library",
     "require": {

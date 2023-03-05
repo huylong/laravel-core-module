@@ -3,25 +3,25 @@
 // +----------------------------------------------------------------------
 // | HuyPham [Just Like ～ ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2017~2022 https://catchadmin.com All rights reserved.
-
+// | Copyright (c) 2023~ now https://daygiare.com All rights reserved.
+// +----------------------------------------------------------------------
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
 declare(strict_types=1);
 
-namespace Catch\Base;
+namespace BlueStar\Base;
 
-use Catch\Enums\Code;
-use Catch\Exceptions\FailedException;
+use BlueStar\Enums\Code;
+use BlueStar\Exceptions\FailedException;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * base catch controller
+ * base BlueStar controller
  */
-abstract class CatchController extends Controller
+abstract class BlueStarController extends Controller
 {
     /**
      * @param string|null $guard

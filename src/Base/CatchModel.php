@@ -3,10 +3,9 @@
 // +----------------------------------------------------------------------
 // | HuyPham [Just Like ～ ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2017~2022 https://catchadmin.com All rights reserved.
+// | Copyright (c) 2023~ now https://daygiare.com All rights reserved.
 // +----------------------------------------------------------------------
-// | Licensed ( https://github.com/JaguarJack/catchadmin-laravel/blob/master/LICENSE.md )
-// +----------------------------------------------------------------------
+
 // | Author: HuyPham[ huyad1102@gmail.com ]
 // +----------------------------------------------------------------------
 
