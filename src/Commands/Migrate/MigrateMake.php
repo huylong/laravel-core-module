@@ -11,7 +11,7 @@
 namespace BlueStar\Commands\Migrate;
 
 use BlueStar\BlueStarAdmin;
-use BlueStar\Cds\BlueStarCommand;
+use BlueStar\Commands\BlueStarCommand;
 use Illuminate\Sommanupport\Facades\File;
 use Illuminate\Support\Str;
 
